@@ -1,232 +1,165 @@
+// check if teacher is logged in
+var currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
 
-// Get logged-in teacher information
-let currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
-
-// Check teacher login
-if (!currentUser || currentUser.role !== "teacher") {
+if (currentUser == null || currentUser.role != "teacher") {
     window.location.href = "login.html";
 } else {
-    document.getElementById("instructorName").textContent =
-        currentUser.name;
+    document.getElementById("instructorName").textContent = currentUser.name;
 }
 
-
-// Logout Function
-document.getElementById("logoutBtn").addEventListener("click", function() {
+// logout
+document.getElementById("logoutBtn").addEventListener("click", function () {
     sessionStorage.removeItem("currentUser");
     window.location.href = "login.html";
 });
 
+// arrays to store data
+var courses = [];
+var quizzes = [];
+var assignments = [];
+var materials = [];
+var feedbacks = [];
 
-// Get HTML Elements
-const courseForm = document.getElementById("courseForm");
-const quizForm = document.getElementById("quizForm");
-const assignmentForm = document.getElementById("assignmentForm");
-const materialForm = document.getElementById("materialForm");
-const feedbackForm = document.getElementById("feedbackForm");
-
-
-// Dashboard Data
-let courses = [];
-let quizzes = [];
-let assignments = [];
-let materials = [];
-let feedbacks = [];
-
-
-// Update Dashboard Summary
+// update the numbers in summary cards
 function updateSummary() {
-    document.querySelectorAll(".summary-card p")[0].textContent = courses.length;
-    document.querySelectorAll(".summary-card p")[1].textContent = quizzes.length;
-    document.querySelectorAll(".summary-card p")[2].textContent = assignments.length;
+    var cards = document.querySelectorAll(".summary-card p");
+    cards[0].textContent = courses.length;
+    cards[1].textContent = quizzes.length;
+    cards[2].textContent = assignments.length;
 }
 
+// ---------- Courses ----------
+document.getElementById("courseForm").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-// Create Courses
-courseForm.addEventListener("submit", function(event) {
-    event.preventDefault();
+    var name = document.getElementById("courseName").value;
+    var description = document.getElementById("courseDescription").value;
 
-    let name = document.getElementById("courseName").value;
-    let description = document.getElementById("courseDescription").value;
+    courses.push({ name: name, description: description });
 
-    courses.push({
-        name: name,
-        description: description
-    });
-
-    displayCourses();
-
-    document.getElementById("courseMessage").textContent =
-        "Course created successfully!";
-
-    courseForm.reset();
-
+    showCourses();
+    document.getElementById("courseMessage").textContent = "Course created successfully!";
+    document.getElementById("courseForm").reset();
     updateSummary();
 });
 
-function displayCourses() {
-    let courseList = document.getElementById("courseList");
+function showCourses() {
+    var list = document.getElementById("courseList");
+    list.innerHTML = "";
 
-    courseList.innerHTML = "";
-
-    courses.forEach(function(course) {
-        let li = document.createElement("li");
-
-        li.textContent = course.name + " - " + course.description;
-
-        courseList.appendChild(li);
-    });
+    for (var i = 0; i < courses.length; i++) {
+        var li = document.createElement("li");
+        li.textContent = courses[i].name + " - " + courses[i].description;
+        list.appendChild(li);
+    }
 }
 
+// ---------- Quizzes ----------
+document.getElementById("quizForm").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-// Create Quizzes
-quizForm.addEventListener("submit", function(event) {
-    event.preventDefault();
+    var name = document.getElementById("quizName").value;
+    var description = document.getElementById("quizDescription").value;
 
-    let name = document.getElementById("quizName").value;
-    let description = document.getElementById("quizDescription").value;
+    quizzes.push({ name: name, description: description });
 
-    quizzes.push({
-        name: name,
-        description: description
-    });
-
-    displayQuizzes();
-
-    document.getElementById("quizMessage").textContent =
-        "Quiz created successfully!";
-
-    quizForm.reset();
-
+    showQuizzes();
+    document.getElementById("quizMessage").textContent = "Quiz created successfully!";
+    document.getElementById("quizForm").reset();
     updateSummary();
 });
 
-function displayQuizzes() {
-    let quizList = document.getElementById("quizList");
+function showQuizzes() {
+    var list = document.getElementById("quizList");
+    list.innerHTML = "";
 
-    quizList.innerHTML = "";
-
-    quizzes.forEach(function(quiz) {
-        let li = document.createElement("li");
-
-        li.textContent = quiz.name + " - " + quiz.description;
-
-        quizList.appendChild(li);
-    });
+    for (var i = 0; i < quizzes.length; i++) {
+        var li = document.createElement("li");
+        li.textContent = quizzes[i].name + " - " + quizzes[i].description;
+        list.appendChild(li);
+    }
 }
 
+// ---------- Assignments ----------
+document.getElementById("assignmentForm").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-// Manage Assignments
-assignmentForm.addEventListener("submit", function(event) {
-    event.preventDefault();
+    var name = document.getElementById("assignmentName").value;
+    var description = document.getElementById("assignmentDescription").value;
 
-    let name = document.getElementById("assignmentName").value;
-    let description = document.getElementById("assignmentDescription").value;
+    assignments.push({ name: name, description: description });
 
-    assignments.push({
-        name: name,
-        description: description
-    });
-
-    displayAssignments();
-
-    document.getElementById("assignmentMessage").textContent =
-        "Assignment created successfully!";
-
-    assignmentForm.reset();
-
+    showAssignments();
+    document.getElementById("assignmentMessage").textContent = "Assignment created successfully!";
+    document.getElementById("assignmentForm").reset();
     updateSummary();
 });
 
-function displayAssignments() {
-    let assignmentList = document.getElementById("assignmentList");
+function showAssignments() {
+    var list = document.getElementById("assignmentList");
+    list.innerHTML = "";
 
-    assignmentList.innerHTML = "";
-
-    assignments.forEach(function(assignment) {
-        let li = document.createElement("li");
-
-        li.textContent = assignment.name + " - " + assignment.description;
-
-        assignmentList.appendChild(li);
-    });
+    for (var i = 0; i < assignments.length; i++) {
+        var li = document.createElement("li");
+        li.textContent = assignments[i].name + " - " + assignments[i].description;
+        list.appendChild(li);
+    }
 }
 
+// ---------- Learning Materials ----------
+document.getElementById("materialForm").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-// Upload Learning Materials
-materialForm.addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    let name = document.getElementById("materialName").value;
-    let file = document.getElementById("materialFile").files[0];
+    var name = document.getElementById("materialName").value;
+    var file = document.getElementById("materialFile").files[0];
 
     if (!file) {
         alert("Please select a file.");
         return;
     }
 
-    materials.push({
-        name: name,
-        fileName: file.name
-    });
+    materials.push({ name: name, fileName: file.name });
 
-    displayMaterials();
-
-    document.getElementById("materialMessage").textContent =
-        "Material added successfully!";
-
-    materialForm.reset();
+    showMaterials();
+    document.getElementById("materialMessage").textContent = "Material added successfully!";
+    document.getElementById("materialForm").reset();
 });
 
-function displayMaterials() {
-    let materialList = document.getElementById("materialList");
+function showMaterials() {
+    var list = document.getElementById("materialList");
+    list.innerHTML = "";
 
-    materialList.innerHTML = "";
-
-    materials.forEach(function(material) {
-        let li = document.createElement("li");
-
-        li.textContent = material.name + " - " + material.fileName;
-
-        materialList.appendChild(li);
-    });
+    for (var i = 0; i < materials.length; i++) {
+        var li = document.createElement("li");
+        li.textContent = materials[i].name + " - " + materials[i].fileName;
+        list.appendChild(li);
+    }
 }
 
+// ---------- Feedback ----------
+document.getElementById("feedbackForm").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-// Provide Feedback
-feedbackForm.addEventListener("submit", function(event) {
-    event.preventDefault();
+    var student = document.getElementById("studentName").value;
+    var text = document.getElementById("feedbackText").value;
 
-    let student = document.getElementById("studentName").value;
-    let feedback = document.getElementById("feedbackText").value;
+    feedbacks.push({ student: student, feedback: text });
 
-    feedbacks.push({
-        student: student,
-        feedback: feedback
-    });
-
-    displayFeedback();
-
-    document.getElementById("feedbackMessage").textContent =
-        "Feedback submitted successfully!";
-
-    feedbackForm.reset();
+    showFeedback();
+    document.getElementById("feedbackMessage").textContent = "Feedback submitted successfully!";
+    document.getElementById("feedbackForm").reset();
 });
 
-function displayFeedback() {
-    let feedbackList = document.getElementById("feedbackList");
+function showFeedback() {
+    var list = document.getElementById("feedbackList");
+    list.innerHTML = "";
 
-    feedbackList.innerHTML = "";
-
-    feedbacks.forEach(function(item) {
-        let li = document.createElement("li");
-
-        li.textContent = item.student + ": " + item.feedback;
-
-        feedbackList.appendChild(li);
-    });
+    for (var i = 0; i < feedbacks.length; i++) {
+        var li = document.createElement("li");
+        li.textContent = feedbacks[i].student + ": " + feedbacks[i].feedback;
+        list.appendChild(li);
+    }
 }
 
-
-// Initial Summary
+// show 0 in the cards when page loads
 updateSummary();
