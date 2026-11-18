@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Instructor Dashboard - LMS</title>
+    <link rel="stylesheet" href="instructor-dashboard.css">
+</head>
+<body>
+    
+    <div class="sidebar">
+        <h2>My LMS</h2>
+
+        <div class="user-info">
+            <h3 id="instructorName">Instructor</h3>
+            <p>Teacher Account</p>
+        </div>
+
+        <nav>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#courses">Create Courses</a>
+            <a href="#quizzes">Create Quizzes</a>
+            <a href="#grades">Grade Submission</a>
+            <a href="#assignments">Manage Assignments</a>
+            <a href="#materials">Upload Learning Materials</a>
+            <a href="#feedback">Provide Feedback</a>
+        </nav>
+
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+    </div>
+
+
+    <main class="main-content">
+
+        <header>
+            <div>
+                <h1>Instructor Dashboard</h1>
+                <p>Welcome to your teaching portal!</p>
+            </div>
+        </header>
+
+
+        <!-- Dashboard Overview -->
+        <section id="dashboard">
+            <h2>Overview</h2>
+
+            <div class="summary-cards">
+
+                <div class="summary-card">
+                    <h3>Total Courses</h3>
+                    <p>0</p>
+                </div>
+
+                <div class="summary-card">
+                    <h3>Total Quizzes</h3>
+                    <p>0</p>
+                </div>
+
+                <div class="summary-card">
+                    <h3>Assignments</h3>
+                    <p>0</p>
+                </div>
+
+                <div class="summary-card">
+                    <h3>Submissions to Grade</h3>
+                    <p>0</p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Create Courses -->
+        <section id="courses">
+            <h2>Create Courses</h2>
+
+            <div class="content-card">
+                <form id="courseForm">
+
+                    <label for="courseName">Course Name:</label>
+                    <input type="text" id="courseName"
+                        placeholder="Enter course name" required>
+
+                    <label for="courseDescription">Course Description:</label>
+                    <textarea id="courseDescription"
+                        placeholder="Enter course description"
+                        required></textarea>
+
+                    <button type="submit">Create Course</button>
+
+                </form>
+
+                <h3 class="subheading">My Courses</h3>
+
+                <ul id="courseList">
+                    <li>No courses created yet.</li>
+                </ul>
+
+                <p id="courseMessage" class="message"></p>
+            </div>
+        </section>
+
+
+        <!-- Create Quizzes -->
+        <section id="quizzes">
+            <h2>Create Quizzes</h2>
+
+            <div class="content-card">
+                <form id="quizForm">
+
+                    <label for="quizName">Quiz Name:</label>
+                    <input type="text" id="quizName"
+                        placeholder="Enter quiz name" required>
+
+                    <label for="quizDescription">Quiz Description:</label>
+                    <textarea id="quizDescription"
+                        placeholder="Enter quiz description"
+                        required></textarea>
+
+                    <button type="submit">Create Quiz</button>
+
+                </form>
+
+                <h3 class="subheading">My Quizzes</h3>
+
+                <ul id="quizList">
+                    <li>No quizzes created yet.</li>
+                </ul>
+
+                <p id="quizMessage" class="message"></p>
+            </div>
+        </section>
+
+
+        <!-- Grade Submission -->
+        <section id="grades">
+            <h2>Grade Submission</h2>
+
+            <div class="content-card">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Assignment</th>
+                            <th>Submission</th>
+                            <th>Grade</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="gradesTable">
+                        <tr>
+                            <td colspan="4">No submissions available.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
+
+
+        <!-- Manage Assignments -->
+        <section id="assignments">
+            <h2>Manage Assignments</h2>
+
+            <div class="content-card">
+
+                <form id="assignmentForm">
+
+                    <label for="assignmentName">Assignment Name:</label>
+                    <input type="text" id="assignmentName"
+                        placeholder="Enter assignment name" required>
+
+                    <label for="assignmentDescription">Assignment Description:</label>
+                    <textarea id="assignmentDescription"
+                        placeholder="Enter assignment instructions"
+                        required></textarea>
+
+                    <button type="submit">Create Assignment</button>
+
+                </form>
+
+                <h3 class="subheading">My Assignments</h3>
+
+                <ul id="assignmentList">
+                    <li>No assignments created yet.</li>
+                </ul>
+
+                <p id="assignmentMessage" class="message"></p>
+
+            </div>
+        </section>
+
+
+        <!-- Upload Learning Materials -->
+        <section id="materials">
+            <h2>Upload Learning Materials</h2>
+
+            <div class="content-card">
+
+                <form id="materialForm">
+
+                    <label for="materialName">Material Name:</label>
+                    <input type="text" id="materialName"
+                        placeholder="Enter material name" required>
+
+                    <label for="materialFile">Choose Learning Material:</label>
+                    <input type="file" id="materialFile" required>
+
+                    <button type="submit">Upload Material</button>
+
+                </form>
+
+                <h3 class="subheading">Uploaded Materials</h3>
+
+                <ul id="materialList">
+                    <li>No learning materials uploaded yet.</li>
+                </ul>
+
+                <p id="materialMessage" class="message"></p>
+
+            </div>
+        </section>
+
+
+        <!-- Provide Feedback -->
+        <section id="feedback">
+            <h2>Provide Feedback</h2>
+
+            <div class="content-card">
+
+                <form id="feedbackForm">
+
+                    <label for="studentName">Student Name:</label>
+                    <input type="text" id="studentName"
+                        placeholder="Enter student name" required>
+
+                    <label for="feedbackText">Feedback:</label>
+                    <textarea id="feedbackText"
+                        placeholder="Write feedback for the student"
+                        required></textarea>
+
+                    <button type="submit">Send Feedback</button>
+
+                </form>
+
+                <h3 class="subheading">Provided Feedback</h3>
+
+                <ul id="feedbackList">
+                    <li>No feedback provided yet.</li>
+                </ul>
+
+                <p id="feedbackMessage" class="message"></p>
+
+            </div>
+        </section>
+
+
+        <footer>
+            <p>© 2026 Online Learning Management System</p>
+        </footer>
+
+    </main>
+
+    <!--script src="instructor-dashboard.js"></script-->
+</body>
+</html>
+

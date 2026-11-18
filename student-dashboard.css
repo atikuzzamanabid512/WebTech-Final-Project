@@ -1,0 +1,380 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6fb;
+    color: #333;
+}
+
+/* Sidebar */
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: #26345c;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 25px 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 35px;
+    color: #fff;
+}
+
+.user-info {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 15px;
+    background: #354574;
+    border-radius: 8px;
+}
+
+.user-info h3 {
+    margin-bottom: 7px;
+}
+
+.user-info p {
+    font-size: 13px;
+    color: #d4dcf5;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar nav a {
+    color: white;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.sidebar nav a:hover {
+    background: #5265c9;
+}
+
+.logout-btn {
+    margin-top: auto;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.logout-btn:hover {
+    background: #c0392b;
+}
+
+
+/* Main Content */
+
+.main-content {
+    margin-left: 250px;
+    padding: 30px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+header h1 {
+    color: #26345c;
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #777;
+}
+
+.notification-icon a {
+    text-decoration: none;
+    color: #5265c9;
+    font-weight: bold;
+}
+
+
+/* Sections */
+
+section {
+    margin-bottom: 40px;
+    scroll-margin-top: 25px;
+}
+
+section h2 {
+    color: #26345c;
+    margin-bottom: 20px;
+}
+
+.subheading {
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+
+/* Summary Cards */
+
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.summary-card {
+    background: white;
+    padding: 25px 18px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border-left: 4px solid #667eea;
+}
+
+.summary-card h3 {
+    font-size: 15px;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.summary-card p {
+    font-size: 26px;
+    font-weight: bold;
+    color: #5265c9;
+}
+
+
+/* Courses */
+
+.course-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.course-card,
+.content-card {
+    background: white;
+    padding: 22px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    margin-bottom: 15px;
+}
+
+.course-card h3,
+.content-card h3 {
+    color: #26345c;
+    margin-bottom: 12px;
+}
+
+.course-card p,
+.content-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+button {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 11px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #5265c9;
+}
+
+.enroll-btn:disabled {
+    background: #999;
+    cursor: not-allowed;
+}
+
+#enrolledCourses {
+    background: white;
+    padding: 20px 20px 20px 40px;
+    border-radius: 8px;
+    line-height: 2;
+}
+
+
+/* Learning Materials */
+
+.material-link {
+    color: #5265c9;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.material-link:hover {
+    text-decoration: underline;
+}
+
+
+/* Forms */
+
+form label {
+    display: block;
+    margin: 12px 0;
+    color: #444;
+}
+
+textarea {
+    width: 100%;
+    min-height: 110px;
+    padding: 12px;
+    margin: 10px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: vertical;
+    font-family: Arial, sans-serif;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+form input[type="radio"] {
+    margin-right: 7px;
+}
+
+.message {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+
+/* Grades Table */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: #eef0ff;
+    color: #26345c;
+}
+
+
+/* Learning Progress */
+
+.progress-background {
+    width: 100%;
+    height: 22px;
+    background: #e5e7eb;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #667eea;
+    border-radius: 20px;
+    transition: width 0.4s;
+}
+
+
+/* Notifications */
+
+#notificationList {
+    padding-left: 22px;
+    line-height: 2;
+}
+
+
+/* Footer */
+
+footer {
+    text-align: center;
+    color: #888;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 1000px) {
+    .summary-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .course-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .sidebar nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .logout-btn {
+        margin-top: 20px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .course-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 450px) {
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar nav {
+        grid-template-columns: 1fr;
+    }
+}

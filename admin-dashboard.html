@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Admin Dashboard - LMS</title>
+    <link rel="stylesheet" href="admin-dashboard.css">
+</head>
+<body>
+    
+
+    <div class="sidebar">
+        <h2>My LMS</h2>
+
+        <div class="user-info">
+            <h3 id="adminName">Admin</h3>
+            <p>Administrator Account</p>
+        </div>
+
+        <nav>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#courses">Manage Courses</a>
+            <a href="#users">Manage Users</a>
+            <a href="#reports">View System Reports</a>
+            <a href="#settings">Manage System Settings</a>
+        </nav>
+
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+    </div>
+
+
+    <main class="main-content">
+
+        <header>
+            <div>
+                <h1>Admin Dashboard</h1>
+                <p>Welcome to the LMS Administration Portal!</p>
+            </div>
+        </header>
+
+
+        <!-- Dashboard Overview -->
+        <section id="dashboard">
+            <h2>Overview</h2>
+
+            <div class="summary-cards">
+
+                <div class="summary-card">
+                    <h3>Total Courses</h3>
+                    <p id="courseCount">0</p>
+                </div>
+
+                <div class="summary-card">
+                    <h3>Total Users</h3>
+                    <p id="userCount">0</p>
+                </div>
+
+                <div class="summary-card">
+                    <h3>System Reports</h3>
+                    <p>0</p>
+                </div>
+
+                <div class="summary-card">
+                    <h3>System Settings</h3>
+                    <p>Manage</p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Manage Courses -->
+        <section id="courses">
+            <h2>Manage Courses</h2>
+
+            <div class="content-card">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Course ID</th>
+                            <th>Course Name</th>
+                            <th>Instructor</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="courseTable">
+                        <!--tr>
+                            <td colspan="4">No courses available.</td>
+                        </tr-->
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
+
+
+        <!-- Manage Users -->
+        <section id="users">
+            <h2>Manage Users</h2>
+
+            <div class="content-card">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="userTable">
+                        <tr>
+                            <td colspan="3">No users available.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
+
+
+        <!-- View System Reports -->
+        <section id="reports">
+            <h2>View System Reports</h2>
+
+            <div class="content-card">
+
+                <h3>System Reports</h3>
+
+                <p id="reportText">
+                    No system reports available.
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- Manage System Settings -->
+        <section id="settings">
+            <h2>Manage System Settings</h2>
+
+            <div class="content-card">
+
+                <form id="settingsForm">
+
+                    <label for="systemName">System Name:</label>
+                    <input
+                        type="text"
+                        id="systemName"
+                        value="Online Learning Management System"
+                        required
+                    >
+
+                    <label for="adminEmail">Admin Email:</label>
+                    <input
+                        type="email"
+                        id="adminEmail"
+                        placeholder="Enter admin email"
+                        required
+                    >
+
+                    <button type="submit">Save Settings</button>
+
+                </form>
+
+                <p id="settingsMessage" class="message"></p>
+
+            </div>
+        </section>
+
+
+        <footer>
+            <p>© 2026 Online Learning Management System</p>
+        </footer>
+
+    </main>
+
+    <script src="admin-dashboard.js"></script>
+</body>
+</html>
+
